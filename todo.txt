@@ -1,0 +1,9 @@
+* FKs, disable constraints
+* checks
+* developer part?
+ - arrays
+ - windowing
+ - regex
+ - FILTER
+ - indexing GiST, BRIN...
+ 
