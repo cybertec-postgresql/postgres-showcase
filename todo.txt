@@ -6,4 +6,8 @@
  - regex
  - FILTER
  - indexing GiST, BRIN...
- 
+ * CTE, wr, rec
+* Transactional DDL
+* Review of data types
+* Extensions
+* COPY

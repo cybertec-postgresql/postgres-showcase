@@ -1,0 +1,5 @@
+testmain
+testunpriv
+testunpriv2
+hstore_tbl
+hstore_tbl_fail
