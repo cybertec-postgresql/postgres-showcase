@@ -9,31 +9,33 @@ SET ROLE TO demorole;
 
 CREATE TABLE banking_demo.branch(
     branch_id       int NOT NULL PRIMARY KEY,   -- using just "id" for name here is not recommended, the more explicit the better for important stuff
-    balance         int NOT NULL DEFAULT 0
+    balance         numeric NOT NULL DEFAULT 0
 );
 
 CREATE TABLE banking_demo.teller(
     teller_id       int NOT NULL PRIMARY KEY,
     branch_id       int NOT NULL,
-    balance         int NOT NULL DEFAULT 0
+    balance         numeric NOT NULL DEFAULT 0
 );
 
 CREATE TABLE banking_demo.account(
     account_id      int NOT NULL PRIMARY KEY,
     branch_id       int NOT NULL,
     teller_id       int NOT NULL,
-    balance         int NOT NULL DEFAULT 0
+    balance         numeric NOT NULL DEFAULT 0
 );
 
 CREATE TABLE banking_demo.transaction_history(
     teller_id       int NOT NULL,
     branch_id       int NOT NULL,
     account_id      int NOT NULL,
-    delta           int NOT NULL,
+    delta           numeric NOT NULL,
     created_on      timestamp with time zone NOT NULL DEFAULT now()
 );
 
-
+-- Generally it's also a good practice to at least minimally comment the tables and columns for complex applications
+COMMENT ON TABLE banking_demo.transaction_history IS 'A simple banking table';
+COMMENT ON COLUMN banking_demo.transaction_history.delta IS 'Change in account balance for one transaction';
 
 -- generate 1 branch, 10 tellers for branch, 10K accounts for each teller with random balances
 

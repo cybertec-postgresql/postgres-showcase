@@ -1,25 +1,19 @@
 /*
 Other ways of creating tables are:
-    1) using LIKE to use an existing table as a templates and selecting (or leaving out) some constraints/checks/indexes
+    1) using LIKE to use existing tables as a templates and selecting (or leaving out) some constraints/checks/indexes
     2) create table as select ...
-*/
 
--- create a copy of 
-CREATE TABLE temp  (LIKE t_demo EXCLUDING INDEXES);
-
--- could also do:
--- create table t_demo_log as select * from t_demo where false;
-
-
-/*
 Other types of tables are:
-    1) temporary tables
-    2) "unlogged" tables
+    1) temporary tables - auto-removed when session ends and visible only in that session that created them
+    2) "unlogged" tables - such tables are not WAL-logged thus a lot faster to work with. Downside is that they're emptied after a crash.
 */
 
--- temporary tables are not persistent and visible only in that session that created them
-CREATE TEMP TABLE t (LIKE t_demo);
+-- create a temporary copy of banking_demo.teller
+-- NB! Note that you cannot specify a schema for temp tables
+CREATE TEMP TABLE teller_temp(LIKE banking_demo.teller EXCLUDING INDEXES);
 
--- unlogged tables are not WAL-logged (emptied after a crash) thus a lot faster to work with
-CREATE UNLOGGED TABLE t_data_staging (LIKE t_demo);
+-- could also "auto create" a table from select (no indexes, FKs, checks, etc are transferred)
+CREATE TEMP TABLE teller_temp_2 AS SELECT * FROM banking_demo.teller WHERE false;
 
+-- unlogged tables are a good option for staging tables that get a lot of updates and can be re-initialized quickly from input data
+CREATE UNLOGGED TABLE banking_demo.staging_data AS SELECT * FROM banking_demo.account;
