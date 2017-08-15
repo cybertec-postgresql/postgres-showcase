@@ -11,3 +11,4 @@
 * Review of data types
 * Extensions
 * COPY
+* FTS
