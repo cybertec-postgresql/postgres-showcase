@@ -89,28 +89,29 @@ CREATE TABLE room_reservation (
 
 
 -- similarity search (or fuzzy, or simple kNN), 5 alphabetically most similar places to 'kramertneusiedel' in Austria
+-- such fuzzy search could also be combined with other functions from the "fuzzystrmatch" extension.
+
+CREATE TABLE fuzzy_search (name text);
+
+RESET role;     -- superuser needed for creating extensions and using COPY PROGRAM
 
 CREATE EXTENSION pg_trgm;
 
-CREATE TABLE t_location (name text);
-
-RESET role;
-
-COPY t_location FROM PROGRAM 'curl www.cybertec.at/secret/orte.txt';
+COPY fuzzy_search FROM PROGRAM 'curl www.cybertec.at/secret/orte.txt';  -- ~2k names
 
 SET ROLE TO demorole;
 
-CREATE INDEX idx_trgm ON t_location USING gist (name gist_trgm_ops);
+CREATE INDEX ON fuzzy_search USING gist (name gist_trgm_ops);
 
-SELECT * FROM t_location ORDER BY name <-> 'kramertneusiedel' LIMIT 5;
+SELECT * FROM fuzzy_search ORDER BY name <-> 'kramertneusiedel' LIMIT 5;
 
 
 -- indexing geographical objects
 CREATE TABLE containing_boxes(box_coords box);
 
-insert into containing_boxes
-  select format('((-%s,-%s),(%s,%s))', floor(random()*100), floor(random()*100), floor(random()*100), floor(random()*100) )::box
-  from generate_series(1, 1e5);
+INSERT INTO containing_boxes
+  SELECT format('((-%s,-%s),(%s,%s))', floor(random()*100), floor(random()*100), floor(random()*100), floor(random()*100) )::box
+  FROM generate_series(1, 1e5);
 
 CREATE INDEX ON containing_boxes USING gist (box_coords);
 
