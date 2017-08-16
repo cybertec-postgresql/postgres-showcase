@@ -37,7 +37,7 @@ And when building indexes the maintenance_work_mem parameter can be increased to
 
 */
 
-
+SET search_path TO public;
 
 /* B-tree (default) */
 
@@ -60,10 +60,11 @@ CREATE INDEX ON main_datatypes(substring(text_data1, 1, 3));
 
 
 /* GIN */
+RESET role;     -- superuser needed for creating extensions and using COPY PROGRAM
 
 CREATE EXTENSION btree_gin; -- needed for indexing some "usual" datatypes like integers
 -- when we compare the B-tree and the GIN index we see that the latter is ~10x smaller
-CREATE INDEX ON banking_demo.account USING gin (teller_id);
+CREATE INDEX ON banking.account USING gin (teller_id);
 
 -- JSONB - index top level keys for a simple NoSQL use case.
 CREATE INDEX CONCURRENTLY ON main_datatypes USING gin (json_data);
@@ -71,7 +72,7 @@ CREATE INDEX CONCURRENTLY ON main_datatypes USING gin (json_data);
 SELECT * FROM main_datatypes WHERE json_data @> '{"x": 1}';
 
 -- JSONB - index also inner objects/paths
-CREATE INDEX ON t_demo USING gin (data jsonb_path_ops);
+CREATE INDEX ON main_datatypes USING gin (json_data jsonb_path_ops);
 
 
 
@@ -81,19 +82,18 @@ CREATE INDEX ON t_demo USING gin (data jsonb_path_ops);
 
 CREATE EXTENSION btree_gist;
 
-CREATE TABLE room_reservation (
+CREATE TABLE public.room_reservation (
     room text,
     during tsrange,
     EXCLUDE USING GIST (room WITH =, during WITH &&)
 );
-
+ALTER TABLE public.room_reservation OWNER TO demorole;
 
 -- similarity search (or fuzzy, or simple kNN), 5 alphabetically most similar places to 'kramertneusiedel' in Austria
 -- such fuzzy search could also be combined with other functions from the "fuzzystrmatch" extension.
 
 CREATE TABLE fuzzy_search (name text);
-
-RESET role;     -- superuser needed for creating extensions and using COPY PROGRAM
+ALTER TABLE fuzzy_search OWNER TO demorole;
 
 CREATE EXTENSION pg_trgm;
 
@@ -118,4 +118,3 @@ CREATE INDEX ON containing_boxes USING gist (box_coords);
 ANALYZE containing_boxes;   -- gather statistics
 
 EXPLAIN SELECT * FROM containing_boxes WHERE box_coords @> '((2,2),(4,4))';
-

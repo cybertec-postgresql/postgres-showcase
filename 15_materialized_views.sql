@@ -6,9 +6,9 @@ SELECT * FROM transaction_history
 WHERE created_on > current_date - '1month'::interval;
 
 -- refresh the data (blocks selects)
-REFRESH MATERIALIZED VIEW mv_last_month_data;
+REFRESH MATERIALIZED VIEW mv_last_months_transactions;
 
 -- refresh concurrently needs at least one unique index to "merge" changes effectively
-CREATE UNIQUE INDEX ON mv_last_month_data (id);
+CREATE UNIQUE INDEX ON mv_last_months_transactions (id);
 -- "concurrent" refresh allows other sessions to read the view during the update but is slower
-REFRESH MATERIALIZED VIEW CONCURRENTLY mv_last_month_data;
+REFRESH MATERIALIZED VIEW CONCURRENTLY mv_last_months_transactions;

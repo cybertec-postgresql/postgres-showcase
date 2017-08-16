@@ -8,12 +8,12 @@ Other types of tables are:
     2) "unlogged" tables - such tables are not WAL-logged thus a lot faster to work with. Downside is that they're emptied after a crash.
 */
 
--- create a temporary copy of banking_demo.teller
+-- create a temporary copy of banking.teller
 -- NB! Note that you cannot specify a schema for temp tables
-CREATE TEMP TABLE teller_temp(LIKE banking_demo.teller EXCLUDING INDEXES);
+CREATE TEMP TABLE teller_temp(LIKE banking.teller EXCLUDING INDEXES);
 
 -- could also "auto create" a table from select (no indexes, FKs, checks, etc are transferred)
-CREATE TEMP TABLE teller_temp_2 AS SELECT * FROM banking_demo.teller WHERE false;
+CREATE TEMP TABLE teller_temp_2 AS SELECT * FROM banking.teller WHERE false;
 
 -- unlogged tables are a good option for staging tables that get a lot of updates and can be re-initialized quickly from input data
-CREATE UNLOGGED TABLE banking_demo.staging_data AS SELECT * FROM banking_demo.account;
+CREATE UNLOGGED TABLE banking.staging_data AS SELECT * FROM banking.account;

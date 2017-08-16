@@ -1,4 +1,4 @@
-CREATE TABLE main_datatypes (
+CREATE TABLE public.main_datatypes (
     /* serials aka sequences */
     id          bigserial PRIMARY KEY,   -- serial/bigserial corresponds to int4/int8 and will just auto-attach a DEFAULT sequence
     
@@ -25,8 +25,8 @@ CREATE TABLE main_datatypes (
     /* typical auditing fields to track changes of important data*/
     created_by text NOT NULL DEFAULT current_user,
     created_on timestamptz NOT NULL DEFAULT now(),
-    last_modified_by text           -- would need a trigger to ensure it's always updated when changing data
-    last_modified_on timestamptz,   -- would need a trigger to ensure it's always updated when changing data
+    last_modified_by text,          -- would need a trigger to ensure it's always updated when changing data
+    last_modified_on timestamptz    -- would need a trigger to ensure it's always updated when changing data
 );
 
 

@@ -1,9 +1,8 @@
+-- NB! Dropping databases will fail if there are sessions connected to it. In such cases connected users can be for exmple "killed" with:
+SELECT count(*) AS sessions_killed FROM (SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'pg_features_demo' AND pid != pg_backend_pid()) a;
+
 DROP DATABASE IF EXISTS pg_features_demo;
 
-/*
--- NB! Dropping databases will fail if there are sessions connected to it. In such cases connected users can be for exmple "killed" with:
-SELECT count(*) AS sessions_killed FROM (SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'pg_features_demo') a;
-*/
 
 CREATE DATABASE pg_features_demo;
 

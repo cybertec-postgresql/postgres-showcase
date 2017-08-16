@@ -13,17 +13,17 @@ ALTER TABLE is mostly commonly used to:
 -- adding a new column
 -- note that here we also demonstrate that changing the structure can be performed transactionally!! (unlike in Oracle for example)
 BEGIN;
-ALTER TABLE account_unlogged ADD COLUMN extra_info TEXT;
-ALTER TABLE account_unlogged ALTER COLUMN extra_info SET DEFAULT 'hello';
+ALTER TABLE staging_data ADD COLUMN extra_info TEXT;
+ALTER TABLE staging_data ALTER COLUMN extra_info SET DEFAULT 'hello';
 COMMIT;
 -- also note that for big tables on busy DBs the above 2-step form is much preferred over below form as it won't re-write the whole table:
 -- ALTER TABLE account_unlogged ADD COLUMN extra_info TEXT DEFAULT 'hello';
 
 -- adding a simple check constraint
-ALTER TABLE account_unlogged ADD CONSTRAINT CHECK my_check CHECK (account_id > 0);
+ALTER TABLE staging_data ADD CONSTRAINT my_check CHECK (account_id > 0);
 
 -- change column data type. NB! mostly it means a full table re-write so be wary.
-ALTER TABLE account_unlogged ALTER COLUMN extra_info TYPE varchar(500);
+ALTER TABLE staging_data ALTER COLUMN extra_info TYPE varchar(500);
 
 
 /*
@@ -32,4 +32,4 @@ It tells Postgres to fill up tables only to specified percentage, so that future
 have a chance to be performed "in line" (called HOT-updates). Some "terms and conditions" apply but for certain usecases (a lot of 
 updates on un-indexed columns) huge boosts are possible. Fillfactor can be also specified similarily when creating the table.
 */
-ALTER TABLE account_unlogged SET (FILLFACTOR=80);
+ALTER TABLE staging_data SET (FILLFACTOR=80);

@@ -1,6 +1,7 @@
 /*
 Special subtype of custom types are ENUMs. Concept is the same as in other programming languages, enabling to assing a nice label
 to some internally stored code value, helping with clarity and also performance for bigger data amounts.
+ENUMs should only be used for very static objects, for other cases typical "translation tables" are recommended.
 */
 
 CREATE TYPE processing_state AS ENUM ('WAITING', 'IN_PROCESSING', 'FAILED', 'FINISHED');
