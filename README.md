@@ -9,4 +9,4 @@ Rollout with psql:
 ls -1 *.sql | sort -V | xargs cat | psql
 ```
 
-All feeback welcome!
+All feedback welcome!
