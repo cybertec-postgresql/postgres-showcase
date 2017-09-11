@@ -21,6 +21,11 @@ SELECT array[1,2,3];
 -- simple array declaration in native text form
 SELECT '{1,2,3}'::int[];
 
+-- using the ARRAY constructor
+SELECT ARRAY(VALUES (1), (2), (3));
+-- ARRAY constructor with a subselect
+SELECT ARRAY(SELECT v FROM ( VALUES (1), (2), (3) ) vals (v));
+
 -- creating an array from aggregate
 SELECT array_agg(x) FROM (SELECT 1 AS x UNION SELECT 2) y;
 
