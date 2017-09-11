@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 
 For good performance it's essential that frequent queries take advantage of indexes.

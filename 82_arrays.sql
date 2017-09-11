@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 
 Arrays can be composed from all data types and are first class citizens in Postgres, being used a lot for internal catalogs.

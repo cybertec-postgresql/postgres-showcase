@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Views allow application layering and can be also used for securing data. They behave the same as tables for GRANT privileges and
 don't normally incur any performance hit when selecting.

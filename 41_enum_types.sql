@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Special subtype of custom types are ENUMs. Concept is the same as in other programming languages, enabling to assing a nice label
 to some internally stored code value, helping with clarity and also performance for bigger data amounts.

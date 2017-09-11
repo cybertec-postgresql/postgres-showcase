@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Postgres is a the most extensible general purpose RDBMS out there and one of the most used extensibility feature is creating custom 
 types that can be thought of as "classes" in the object-oriented programming world. Created types can then be used as built-in 

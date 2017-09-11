@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Domains allow extending data types with checks so that you don't have to change multiple single checks when validation requirements change.
 */

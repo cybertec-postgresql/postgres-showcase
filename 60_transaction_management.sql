@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Transaction management is a complex topic but most importantly one should know that Postgres has 3 different isolation levels:
     

@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Postgres has rich analytics support. Analytics can mean a lot of things but here it means there are functions that in addition to
 normal aggregates (AVG, SUM, etc) can also compare individual rows and row groupings! Thus enabling answering questions like - 

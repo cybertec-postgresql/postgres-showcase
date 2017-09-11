@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Postgres has excellent text/string processing capabilities, including support for regular expressions.
 Below some of the most useful functions and text handling techniques.

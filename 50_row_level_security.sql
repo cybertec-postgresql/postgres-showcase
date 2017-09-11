@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Row Level Security (RLS) is quite a new feature (9.5+) and allows having tables where it is guaranteed that all unprivileged users 
 will see only rows that they're allowed to see based on some filter condition. Needs enabling per table.

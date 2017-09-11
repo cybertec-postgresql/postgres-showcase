@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Other ways of creating tables are:
     1) using LIKE to use existing tables as a templates and selecting (or leaving out) some constraints/checks/indexes

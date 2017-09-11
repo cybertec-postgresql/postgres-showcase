@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 ALTER TABLE is mostly commonly used to:
     1) add/drop/rename columns

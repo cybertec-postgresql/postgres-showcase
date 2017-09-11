@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 PL/pgSQL is a specialized programming language that allows to query data and provides common features like variables, comparisons, 
 branching (if/else), error handling, calling other functions.

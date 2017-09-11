@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 CREATE OR REPLACE FUNCTION rewrite_date_check() RETURNS event_trigger AS
 $$
 BEGIN

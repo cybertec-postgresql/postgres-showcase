@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 /*
 Triggers function similar to other RDBMSs - first you declare a "trigger function" and then the trigger itself on a specific table. Thus 
 one fuction can be used for X tables. Trigger functions are almost like normal PL/pgSQL function but they can only return "trigger" 

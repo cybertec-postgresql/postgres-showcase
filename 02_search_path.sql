@@ -1,3 +1,5 @@
+\c pg_features_demo
+
 /* 
 
 Important concept tied to schemas is "search_path". Basically it's a priority list of schemas, 

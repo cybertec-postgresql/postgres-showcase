@@ -1,3 +1,5 @@
+\c pg_features_demo
+
 -- assume "application" role
 -- it's a good practice to own all objects by one "application" role, so that changes could be done using the same role, 
 -- not requiring the samewhat dangerous "superuser".

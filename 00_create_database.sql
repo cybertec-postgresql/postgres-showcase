@@ -15,6 +15,3 @@ In case of multiple environments (enterprize scenario) it is highly recommended 
 minimize chances of executing things on the wrong DB - e.g. dev_app1_db, prod_app1_db.
 
 */
-
--- assuming "psql" as execution environment here
-\c pg_features_demo

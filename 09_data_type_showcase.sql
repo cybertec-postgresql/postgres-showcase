@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 CREATE TABLE public.main_datatypes (
     /* serials aka sequences */
     id          bigserial PRIMARY KEY,   -- serial/bigserial corresponds to int4/int8 and will just auto-attach a DEFAULT sequence

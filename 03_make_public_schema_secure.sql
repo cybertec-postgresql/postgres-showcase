@@ -1,3 +1,5 @@
+\c pg_features_demo
+
 /*
 
 For sensitive environments it is recommended to avoid creating object in the "public" schema or even better to secure
@@ -17,4 +19,3 @@ GRANT USAGE ON SCHEMA public TO demorole_ro;
 ALTER DEFAULT PRIVILEGES
     IN SCHEMA public
 	GRANT SELECT ON TABLES TO demorole_ro;
-

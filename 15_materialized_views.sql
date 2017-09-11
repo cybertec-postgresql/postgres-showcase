@@ -1,3 +1,6 @@
+\c pg_features_demo
+SET ROLE TO demorole;
+
 -- Materialized view is a "point in time" copy of the select statement and needs explicit refreshing
 -- In other aspects the mat.view acts like a normal table - one can create indexes on it 
 

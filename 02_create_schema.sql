@@ -1,4 +1,5 @@
-RESET ROLE;
+\c pg_features_demo
+
 /*
 Schemas in Postgres are basically "namespaces", allowing tables with same names within one DB, if schema names differ.
 By default there is always one "public" schema pre-created with every database, but for bigger applications it is usually 
