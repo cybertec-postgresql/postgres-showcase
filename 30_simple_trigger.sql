@@ -13,7 +13,7 @@ BEGIN
 	RAISE WARNING 'executing trigger function: %', TG_NAME;
     NEW.last_modified_on := now();
 	NEW.last_modified_by := session_user;
-	RETURN NEW;    -- retruning NULL would mean that the row won't be inserted!
+	RETURN NEW;    -- returning NULL would mean that the row won't be inserted!
 END;
 $$
 LANGUAGE plpgsql;
