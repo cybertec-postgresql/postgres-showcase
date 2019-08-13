@@ -9,7 +9,7 @@ CREATE DATABASE pg_features_demo;
 /* Background info:
 
 One Postgres cluster (called also a host or an instance, distinguished by a unique network IP+port pair) can have X amount of databases 
-that only share user accounts (roles).
+that only share user accounts (roles) and some other global objects like tablespaces (if any in use) and system statistics views.
 
 In case of multiple environments (enterprize scenario) it is highly recommended to include the environment name into the DB name, to 
 minimize chances of executing things on the wrong DB - e.g. dev_app1_db, prod_app1_db.
