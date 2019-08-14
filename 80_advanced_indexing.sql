@@ -121,3 +121,13 @@ CREATE INDEX ON containing_boxes USING gist (box_coords);
 ANALYZE containing_boxes;   -- gather statistics
 
 EXPLAIN SELECT * FROM containing_boxes WHERE box_coords @> '((2,2),(4,4))';
+
+
+
+/* "Covering" indexes
+
+This is a v11+ feature that enables to store some often selected columns together with the indexed key value in the
+index tree, enabling fast access without going to the table files. NB! As of currently Postgres cannot use those extra
+columns for filtering so multi-column indexes still have some use cases.
+*/
+CREATE INDEX ON room_reservation (room) INCLUDE (during);
