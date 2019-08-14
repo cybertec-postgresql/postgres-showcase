@@ -6,9 +6,16 @@
  - regex
  - FILTER
  - indexing GiST, BRIN...
- * CTE, wr, rec
+* CTE, wr, rec
+* Hierarchies with recursive CTE and "ltree"
 * Transactional DDL
 * Review of data types
 * Extensions
 * COPY
 * FTS
+* UPSERT
+* Sample JSONB queries
+* FOR UPDATE
+* Advisory locks
+* PL/Pythonu
+* DO blocks

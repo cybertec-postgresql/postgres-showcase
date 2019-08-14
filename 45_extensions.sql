@@ -42,6 +42,9 @@
  * pgstattuple - functions to determine Bloat level of tables / indexes
  * pg_squeeze - fully automatic Bloat cleanup
 
+ To list all functions (tables, views, types, operators, ...) an extension provides within "psql" one can use:
+   \dx+ $some_extension
+
 */
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
