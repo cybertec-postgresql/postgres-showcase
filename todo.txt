@@ -1,16 +1,10 @@
-* FKs, disable constraints
-* checks
 * developer part?
- - arrays
  - windowing
  - regex
- - FILTER
- - indexing GiST, BRIN...
+ - FILTER, ROLLUP
 * CTE, wr, rec
 * Hierarchies with recursive CTE and "ltree"
 * Transactional DDL
-* Review of data types
-* Extensions
 * COPY
 * FTS
 * UPSERT
@@ -19,3 +13,4 @@
 * Advisory locks
 * PL/Pythonu
 * DO blocks
+* PG FDW
