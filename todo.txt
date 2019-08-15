@@ -14,5 +14,4 @@
 * PL/Pythonu
 * DO blocks
 * PG FDW
-* Sessions / killing queries
 * Information Schema
