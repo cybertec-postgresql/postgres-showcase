@@ -6,7 +6,8 @@ SET ROLE TO demorole;
 When it can be already foreseen that a table will grow huge (100+ GB) or there is for example a "hot data" / "cold data"
 scenario, then it makes sense to think about splitting up the table to so called partitions. And the good thing is that
 starting from v10 there is native support for that - so that users can continue to work with the "main" or "top level"
-table and not care or know about the sub-partitions where data rows are actually living in.
+table and not care or know about the sub-partitions where data rows are actually living in. Note though that pre-creation
+of such sub-partitions needs to be managed by the user - but also some extensions can help with that, like 'pg_partman'.
 
 Different partitioning models available:
 
