@@ -65,7 +65,7 @@ CREATE INDEX ON main_datatypes(substring(text_data1, 1, 3));
 /* GIN */
 RESET role;     -- superuser needed for creating extensions and using COPY PROGRAM
 
-CREATE EXTENSION btree_gin; -- needed for indexing some "usual" datatypes like integers
+CREATE EXTENSION IF NOT EXISTS btree_gin; -- needed for indexing some "usual" datatypes like integers
 -- when we compare the B-tree and the GIN index we see that the latter is ~10x smaller
 CREATE INDEX ON banking.account USING gin (teller_id);
 
@@ -83,7 +83,7 @@ CREATE INDEX ON main_datatypes USING gin (json_data jsonb_path_ops);
 
 -- implementing exclusion constraints - ensure no time overlappings are possible
 
-CREATE EXTENSION btree_gist;
+CREATE EXTENSION IF NOT EXISTS btree_gist;
 
 CREATE TABLE public.room_reservation (
     room text,
@@ -98,7 +98,7 @@ ALTER TABLE public.room_reservation OWNER TO demorole;
 CREATE TABLE fuzzy_search (name text);
 ALTER TABLE fuzzy_search OWNER TO demorole;
 
-CREATE EXTENSION pg_trgm;
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 COPY fuzzy_search FROM PROGRAM 'curl www.cybertec.at/secret/orte.txt';  -- ~2k names
 

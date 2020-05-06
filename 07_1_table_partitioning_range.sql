@@ -34,7 +34,7 @@ CREATE TABLE orders_y2019 PARTITION OF orders FOR VALUES FROM ('2019-01-01') TO 
 
 -- we keep working with the "main" table ...
 INSERT INTO orders
-    SELECT 1;
+    SELECT 1, '2019-01-01 01:00';
 
 SELECT * FROM orders; -- 1 row
 

@@ -19,6 +19,8 @@ conditions.
 -- when lots of sub-partitions can be forseen then it's a good idea to move them into a separate schema
 CREATE SCHEMA subpartitions AUTHORIZATION demorole;
 
+CREATE EXTENSION IF NOT EXISTS btree_gin;
+
 SET ROLE TO demorole;
 
 -- used to "instantiate" separate metric definitions
